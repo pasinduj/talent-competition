@@ -41,13 +41,20 @@ namespace Talent.Services.Profile
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowWebAppAccess", builder =>
+              /*  options.AddPolicy("AllowWebAppAccess", builder =>
                 {
                     builder
                         .WithOrigins("http://localhost:61772","http://localhost:60998") // Specify your allowed origins here
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();  
+                });*/
+
+                options.AddPolicy("AllowWebApp", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                     .AllowAnyHeader();
                 });
             });
 
@@ -120,7 +127,7 @@ namespace Talent.Services.Profile
                 }
             });
 
-            app.UseCors("AllowWebAppAccess");
+            app.UseCors("AllowWebApp");
 
             app.UseRouting();
             app.UseAuthentication();
