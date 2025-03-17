@@ -17,7 +17,8 @@ Talent.Services.Listing/appsettings.json
 App/Talent.App.WebApp/wwwroot/js/react/node_modules/public-encrypt/test/test_rsa_privkey.pe
 node_modules/
 App/Talent.App.WebApp/appsettings.json
-appsettings
+Talent.Services.Identity/appsettings.json
+Talent.Services.Identity/appsettings.Development.json
 # User-specific files
 *.md
 
