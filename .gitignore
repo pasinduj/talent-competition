@@ -4,7 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Custom
-Talent.Api/
+Talent.Api/bin
+Talent.Api/appsettings.json
+Talent.Api/appsettings.Development.json
 App/Talent.App.WebApp/bin
 App/Talent.Services.Identity/bin
 App/Talent.Services.Listing/bin
