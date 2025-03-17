@@ -302,4 +302,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 sdonboarding/Configure.secrets.cs
-App/Talent.App.WebApp/wwwroot/js/react/
+
