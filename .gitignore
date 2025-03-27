@@ -23,6 +23,7 @@ Talent.Services.Profile/appsettings.json
 Talent.Services.Profile/appsettings.Development.json
 Talent.Services.Profile/appsettings.docker.json
 Talent.Services.Profile/appsettings.docker.Development.json
+App/Talent.App.WebApp/wwwroot/js/react/dist/
 # User-specific files
 *.md
 
