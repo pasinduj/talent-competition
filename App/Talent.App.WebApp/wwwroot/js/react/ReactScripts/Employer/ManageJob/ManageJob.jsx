@@ -46,7 +46,7 @@ export default class ManageJob extends React.Component {
         this.updateJob = this.updateJob.bind(this); 
         this.handleTitleInputChange = this.handleTitleInputChange.bind(this);
         this.handleSummaryInputChange = this.handleSummaryInputChange.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+       
         
     };
 
@@ -64,7 +64,7 @@ export default class ManageJob extends React.Component {
     };
 
     loadData(callback) {
-        console.log('call loadData')
+        
         var link = 'http://localhost:51689/listing/listing/getSortedEmployerJobs?showActive=true&showUnexpired=true&showExpired=true';
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
@@ -80,7 +80,7 @@ export default class ManageJob extends React.Component {
            success: function(res){
 
             if(res.myJobs){
-                console.log(res.myJobs);
+               
                 this.setState(
                     {
                         loadJobs:res.myJobs
@@ -89,7 +89,7 @@ export default class ManageJob extends React.Component {
             }
            } .bind(this),
            error:function(res){
-            console.log(res.status);
+            console.error("Error on loading Jobs :", res);
            }
 
         })
@@ -110,17 +110,17 @@ export default class ManageJob extends React.Component {
     }
 
     handleFilterChange(event, data) {
-        console.log('called handleFilterChange');
+        
     }
 
     handleSortChange(e, { value }) {   
-        console.log('called handleSortChange');
+        
     }
 
     handleTitleInputChange(event){
-        console.log('called handleTitleInputChange');
+        
         const { value } = event.target;
-        console.log(value);
+       
         const updatedJob = this.state.editingJob;
         updatedJob.title = value;
         updatedJob.location = {
@@ -139,8 +139,8 @@ export default class ManageJob extends React.Component {
 
     handleSummaryInputChange(event){
         const { value } = event.target;
-        console.log(value);
-        console.log('called handleInputChange');
+        
+       
 
         const updatedJob = this.state.editingJob;
         updatedJob.summary = value;
@@ -156,11 +156,7 @@ export default class ManageJob extends React.Component {
 
     }
 
-    handleInputChange(event,data){
-        const { name, value } = event.target;
-        console.log(value);
-        console.log('called handleInputChange');
-    }
+   
 
    
    
@@ -170,8 +166,8 @@ export default class ManageJob extends React.Component {
     }
 
     editJob(jobid) {
-        console.log('call editJob');
-        console.log(jobid);
+       
+        
         var link = 'http://localhost:51689/listing/listing/GetJobByToEdit?id='+jobid;
         var cookies = Cookies.get('talentAuthToken');
         
@@ -186,7 +182,7 @@ export default class ManageJob extends React.Component {
             contentType:"application/json",
             dataType: "json",
             success: function(res){
-             console.log("Edit Job load  successfully:", res);
+             
                 
 
              this.setState(
@@ -210,8 +206,7 @@ export default class ManageJob extends React.Component {
     }
 
     closeJob(jobid){
-        console.log('call closeJob');
-        console.log(jobid);
+       
         var link = 'http://localhost:51689/listing/listing/closeJob?id='+jobid;
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
@@ -226,7 +221,7 @@ export default class ManageJob extends React.Component {
            contentType:"application/json",
            dataType: "json",
            success: function(res){
-            console.log("Job closed successfully:", res);
+           
             message: "Successful close job" ;
 
             //load update job list after closing job
@@ -250,7 +245,7 @@ export default class ManageJob extends React.Component {
         const updatedJob = this.state.editingJob;
          //load update job list after closing job
         
-        console.log(updatedJob);
+        
         var link = 'http://localhost:51689/listing/listing/createUpdateJob';
         var cookies = Cookies.get('talentAuthToken');
 
