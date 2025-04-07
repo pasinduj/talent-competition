@@ -6,6 +6,8 @@ import { userNavigation } from './UserNavigation.jsx'
 import { FormErrors } from '../Form/FormErrors.jsx'
 import Cookies from 'js-cookie'
 import { EmailVerification } from './EmailVerification.jsx';
+import envconfig from '../envConfig.js';
+
 
 export default class LoginForm extends React.Component {
     constructor(props) {
@@ -28,6 +30,7 @@ export default class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.isFormValid = this.isFormValid.bind(this);
         this.isLoadingChange = this.isLoadingChange.bind(this);
+        console.log(envconfig);
     };
     handleUserInput(event) {
         const name = event.target.name;
@@ -82,6 +85,8 @@ export default class LoginForm extends React.Component {
     login() {
         this.setState({ isLoading: true });
 
+        console.log("API:", envconfig.IDENTITY_API_URL);
+
         var loginModel = {
             isRemember: this.state.isRemember,
             email: this.state.email,
@@ -89,7 +94,7 @@ export default class LoginForm extends React.Component {
         }
 
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/signin',
+            url: `${envconfig.IDENTITY_API_URL}/authentication/authentication/signin`,
             type: 'POST',
             data: JSON.stringify(loginModel),
             contentType: 'application/json',

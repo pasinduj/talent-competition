@@ -5,6 +5,9 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <PackageId>Talent.Services.Listing</PackageId>
   </PropertyGroup>
+	<PropertyGroup>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+	</PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Domain\Models\" />

@@ -1,7 +1,8 @@
 ﻿import React from 'react';
 import Cookies from 'js-cookie';
 import { userNavigation } from '../Account/UserNavigation.jsx'
-import queryString from 'query-string'
+import queryString from 'query-string';
+import envconfig from '../envConfig.js';
 
 export default class EmailConfirmation extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export default class EmailConfirmation extends React.Component {
     componentDidMount() {
         //verifyEmail
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/' + this.state.pagetype,
+            url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/' + this.state.pagetype,
             type: 'GET',
             contentType: 'application/json',
             dataType: 'json',
