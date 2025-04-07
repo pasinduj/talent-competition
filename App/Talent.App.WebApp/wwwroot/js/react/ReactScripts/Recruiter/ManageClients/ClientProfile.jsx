@@ -7,7 +7,8 @@ import { Modal, Grid, Menu, Segment, Icon, Button } from 'semantic-ui-react';
 import { IndividualDetailSection, CompanyDetailSection } from '../../Profile/ContactDetail.jsx';
 import Skill from '../../Profile/Skill.jsx';
 import PhotoUpload from '../../Profile/PhotoUpload.jsx';
-import VideoUpload from '../../Profile/VideoUpload.jsx'
+import VideoUpload from '../../Profile/VideoUpload.jsx';
+import envconfig from '../../envConfig.js';
 
 class ClientProfileModal extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class ClientProfileModal extends React.Component {
         if (id != undefined) {
             var cookies = Cookies.get('talentAuthToken');
             $.ajax({
-                url: 'http://localhost:60290/profile/profile/getEmployerProfile?id=' + id + '&role=' + 'employer',
+                url: '${envconfig.PROFILE_API_URL}/profile/profile/getEmployerProfile?id=' + id + '&role=' + 'employer',
                 headers: {
                     'Authorization': 'Bearer ' + cookies,
                     'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ class ClientProfileModal extends React.Component {
     saveData() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/saveClientProfile',
+            url: '${envconfig.PROFILE_API_URL}/profile/profile/saveClientProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

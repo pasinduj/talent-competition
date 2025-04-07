@@ -1,5 +1,7 @@
 ﻿import React from 'react';
 import Cookies from 'js-cookie';
+import envconfig from '../envConfig.js';
+
 export class Images extends React.Component {
 
     constructor(props) {
@@ -29,7 +31,7 @@ export class Images extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getEmployerProfileImage/?id=' + Id,
+            url: '${envconfig.PROFILE_API_URL}/profile/profile/getEmployerProfileImage/?id=' + Id,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -45,7 +47,7 @@ export class Images extends React.Component {
 
                 if (res.employerProfile.length > 0) {
                     for (var i = 0; i < res.employerProfile.length; i++) {
-                        imageSrcArr.push("http://localhost:60290/profile/profile/getEmployerProfileImages/?Id=" + res.employerProfile[i].fileName);
+                        imageSrcArr.push("${envconfig.PROFILE_API_URL}/profile/profile/getEmployerProfileImages/?Id=" + res.employerProfile[i].fileName);
                         imageIdArr.push(res.employerProfile[i].id);
                         selectedFileArr.push("");
                     }
@@ -137,7 +139,7 @@ export class Images extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addEmployerProfileImages',
+            url: '${envconfig.PROFILE_API_URL}/profile/profile/addEmployerProfileImages',
             headers: {
                 'Authorization': 'Bearer ' + cookies
             },
