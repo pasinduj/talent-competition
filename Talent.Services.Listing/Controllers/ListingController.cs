@@ -219,18 +219,18 @@ namespace Talent.Services.Listing.Controllers
         }
         [HttpPost("closeJob")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "employer, recruiter")]
-        public async Task<IActionResult> CloseJob([FromBody]string id)
+        public async Task<IActionResult> CloseJob([FromBody] CloseJobRequest request)
         {
             try
             {
                 //userId is either Employer or Recruiter
-                string userId = (await _jobService.GetJobByIDAsync(id)).EmployerID;
+                string userId = (await _jobService.GetJobByIDAsync(request.Id)).EmployerID;
                 
                 if (userId == _userAppContext.CurrentUserId)
                 {
                     var jobStatus = JobStatus.Closed;
-                    await _jobService.UpdateJobStatusAsync(id, jobStatus);
-                    return Json(new { Success = true, Message = "Job updated successfully" });
+                    await _jobService.UpdateJobStatusAsync(request.Id, jobStatus);
+                    return Json(new { Success = true, Message = "Job updated successfully",jobId = request.Id });
                 }
                 else
                     return Json(new { Success = false, Message = "You are not authorised to update this job" });
@@ -238,6 +238,7 @@ namespace Talent.Services.Listing.Controllers
             catch (Exception e)
             {
                 return Json(new { Success = false, Message = "Error while updating job" });
+
             }
         }
 
