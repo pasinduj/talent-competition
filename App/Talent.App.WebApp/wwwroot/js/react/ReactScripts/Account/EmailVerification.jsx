@@ -24,7 +24,7 @@ export class EmailVerification extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.isFormValid = this.isFormValid.bind(this);
         this.isLoadingChange = this.isLoadingChange.bind(this);
-        console.log("API:", envconfig.IDENTITY_API_URL);
+        
     };
 
     componentDidMount() {

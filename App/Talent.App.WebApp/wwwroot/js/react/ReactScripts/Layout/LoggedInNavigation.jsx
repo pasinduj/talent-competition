@@ -18,9 +18,9 @@ export class LoggedInNavigation extends React.Component {
     }
 
     isUserAuthenticated() {
-        var cookies = Cookies.get('talentAuthToken');
+        var cookies = Cookies.get('talentAuthToken');        
         $.ajax({
-            url: '${envconfig.PROFILE_API_URL}/profile/profile/isUserAuthenticated',
+            url: `${envconfig.PROFILE_API_URL}/profile/profile/isUserAuthenticated`,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -35,6 +35,7 @@ export class LoggedInNavigation extends React.Component {
                 }
             }.bind(this),
             error: function (res) {
+                console.log(`${envconfig.PROFILE_API_URL}`);
                 console.log("Not logged in!!")
             }.bind(this)
         })

@@ -65,7 +65,7 @@ export default class ManageJob extends React.Component {
 
     loadData(callback) {
         
-        var link = '${envconfig.LISTING_API_URL}/listing/listing/getSortedEmployerJobs?showActive=true&showUnexpired=true&showExpired=true';
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/getSortedEmployerJobs?showActive=true&showUnexpired=true&showExpired=true`;
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
         $.ajax({
@@ -168,7 +168,7 @@ export default class ManageJob extends React.Component {
     editJob(jobid) {
        
         
-        var link = '${envconfig.LISTING_API_URL}/listing/listing/GetJobByToEdit?id='+jobid;
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/GetJobByToEdit?id=`+jobid;
         var cookies = Cookies.get('talentAuthToken');
         
         $.ajax({
@@ -207,7 +207,7 @@ export default class ManageJob extends React.Component {
 
     closeJob(jobid){
        
-        var link = '${envconfig.LISTING_API_URL}/listing/listing/closeJob?id='+jobid;
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/closeJob?id=`+jobid;
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
         $.ajax({
@@ -246,7 +246,7 @@ export default class ManageJob extends React.Component {
          //load update job list after closing job
         
         
-        var link = '${envconfig.LISTING_API_URL}/listing/listing/createUpdateJob';
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/createUpdateJob`;
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({

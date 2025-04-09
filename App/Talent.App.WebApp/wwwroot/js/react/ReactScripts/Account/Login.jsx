@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.isFormValid = this.isFormValid.bind(this);
         this.isLoadingChange = this.isLoadingChange.bind(this);
-        console.log(envconfig);
+        
     };
     handleUserInput(event) {
         const name = event.target.name;

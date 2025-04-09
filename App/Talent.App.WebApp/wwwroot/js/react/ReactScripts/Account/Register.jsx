@@ -32,7 +32,7 @@ export default class Register extends React.Component {
         this.errorClass = this.errorClass.bind(this);
         this.isLoadingChange = this.isLoadingChange.bind(this);
         this.register = this.register.bind(this);
-        console.log("API:", envconfig.IDENTITY_API_URL);
+       
     };
     register() {
         var self = this;
@@ -49,7 +49,7 @@ export default class Register extends React.Component {
         };
 
         $.ajax({
-            url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/signup',
+            url: `${envconfig.IDENTITY_API_URL}/authentication/authentication/signup`,
             type: 'POST',
             data: JSON.stringify(registerModel),
             contentType: 'application/json',

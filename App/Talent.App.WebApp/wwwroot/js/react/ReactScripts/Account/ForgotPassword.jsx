@@ -2,7 +2,9 @@
 import { SingleInput } from '../Form/SingleInput.jsx'
 import { Select } from '../Form/Select.jsx'
 import { CheckBox } from '../Form/CheckBox.jsx'
-import { FormErrors } from '../Form/FormErrors.jsx'
+import { FormErrors } from '../Form/FormErrors.jsx';
+import envconfig from '../envConfig.js';
+
 
 export default class ForgotPassword extends React.Component {
     constructor(props) {
@@ -32,7 +34,7 @@ export default class ForgotPassword extends React.Component {
         var forgotPasswordModel = { email: this.state.email };
 
         $.ajax({
-            url: '${process.env.REACT_APP_IDENTITY_API_URL}/authentication/authentication/forgetpassword',
+            url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/forgetpassword',
             type: 'POST',
             data: JSON.stringify(forgotPasswordModel),
             contentType: 'application/json',

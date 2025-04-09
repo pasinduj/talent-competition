@@ -26,7 +26,7 @@ export default class ResetPassword extends React.Component {
         this.errorClass = this.errorClass.bind(this);
         this.validatePassword = this.validatePassword.bind(this);
         this.checkToken = this.checkToken.bind(this);
-        console.log("API:", envconfig.IDENTITY_API_URL);
+        
     }
 
     componentWillMount() {
