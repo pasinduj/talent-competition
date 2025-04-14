@@ -67,8 +67,8 @@ export default class CreateJob extends React.Component {
         var copyJobParam = this.props.match.params.copyId ? this.props.match.params.copyId : "";
 
         if (param != "" || copyJobParam != "") {
-            var link = param != "" ? `${envconfig.LISTING_API_URL}/listing/listing/GetJobByToEdit?id=` + param
-                : `${envconfig.LISTING_API_URL}/listing/listing/GetJobForCopy?id=` + copyJobParam;
+            var link = param != "" ? '${envconfig.LISTING_API_URL}/listing/listing/GetJobByToEdit?id=' + param
+                : '${envconfig.LISTING_API_URL}/listing/listing/GetJobForCopy?id=' + copyJobParam;
             var cookies = Cookies.get('talentAuthToken');
             $.ajax({
                 url: link,
@@ -96,9 +96,9 @@ export default class CreateJob extends React.Component {
     }
     addUpdateJob() {
         var jobData = this.state.jobData;
-        console.log("data to save:", jobData);
+      
         //jobData.jobDetails.startDate = jobData.jobDetails.startDate.toDate();
-        console.log("date:", jobData.jobDetails.startDate);
+       
         var cookies = Cookies.get('talentAuthToken');   
         $.ajax({
             url: `${envconfig.LISTING_API_URL}/listing/listing/createUpdateJob`,
@@ -111,6 +111,7 @@ export default class CreateJob extends React.Component {
             data: JSON.stringify(jobData),
             success: function (res) {
                 if (res.success == true) {
+                    
                     TalentUtil.notification.show(res.message, "success", null, null);
                     window.location = "/ManageJobs";
                    
@@ -128,7 +129,7 @@ export default class CreateJob extends React.Component {
         this.setState({
             jobData:data
         })
-        console.log(data);
+        
     }
    
     render() {
