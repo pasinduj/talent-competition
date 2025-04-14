@@ -85,7 +85,7 @@ export default class LoginForm extends React.Component {
     login() {
         this.setState({ isLoading: true });
 
-        console.log("API:", envconfig.IDENTITY_API_URL);
+        
 
         var loginModel = {
             isRemember: this.state.isRemember,
