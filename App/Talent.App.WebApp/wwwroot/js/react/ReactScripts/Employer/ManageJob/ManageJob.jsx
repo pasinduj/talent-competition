@@ -69,7 +69,8 @@ export default class ManageJob extends React.Component {
     }
 
     handleFilterChange(event, data) {
-        console.log('called handleFilterChange');
+        this.setState({ sortBy: data }, this.loadData);
+        
     }
 
     handleSortChange(e, { value }) {
