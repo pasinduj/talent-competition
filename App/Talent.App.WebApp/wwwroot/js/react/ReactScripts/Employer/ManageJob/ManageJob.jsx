@@ -206,6 +206,12 @@ export default class ManageJob extends React.Component {
     }
 
     closeJob(jobid){
+
+        if (!jobid) {
+            // Validation: jobid is empty            
+            console.error("Job ID is empty. Aborting closeJob.");
+            return; 
+        }
        
         var link = 'http://localhost:51689/listing/listing/closeJob?id='+jobid;
         var cookies = Cookies.get('talentAuthToken');
