@@ -31,12 +31,19 @@ namespace Talent.Services.Identity
         {
             services.AddCors(options =>
             {
+                /*  options.AddPolicy("AllowWebApp", builder =>
+                  {
+                      builder.SetIsOriginAllowed(_ => true)
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                  });*/
+
                 options.AddPolicy("AllowWebApp", builder =>
                 {
-                    builder.SetIsOriginAllowed(_ => true)
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials();
+                    builder.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                     .AllowAnyHeader();
                 });
             });
 

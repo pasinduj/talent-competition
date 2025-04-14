@@ -41,12 +41,18 @@ namespace Talent.Services.Listing
         {
             services.AddCors(options =>
             {
+                /*  options.AddPolicy("AllowWebApp", builder =>
+                  {
+                      builder.SetIsOriginAllowed(_ => true)  
+                             .AllowAnyMethod()
+                             .AllowAnyHeader()
+                             .AllowCredentials();
+                  }); */
                 options.AddPolicy("AllowWebApp", builder =>
                 {
-                    builder.SetIsOriginAllowed(_ => true)  
-                           .AllowAnyMethod()
-                           .AllowAnyHeader()
-                           .AllowCredentials();
+                    builder.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                     .AllowAnyHeader();
                 });
             });
 
