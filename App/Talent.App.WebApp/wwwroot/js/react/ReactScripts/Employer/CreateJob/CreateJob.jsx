@@ -96,9 +96,68 @@ export default class CreateJob extends React.Component {
     }
     addUpdateJob() {
         var jobData = this.state.jobData;
-      
+        var validationfailure = false;
         //jobData.jobDetails.startDate = jobData.jobDetails.startDate.toDate();
+      
+           // === Validation  ===
+    if (!jobData.title || jobData.title.trim() === "") {
+        TalentUtil.notification.show("Job Title is required.", "error", null, null);
        
+        validationfailure= true;
+     
+    }
+
+    if (!jobData.description || jobData.description.trim() === "") {
+        TalentUtil.notification.show("Job Description is required.", "error", null, null);
+       
+        validationfailure = true;
+      
+    }
+
+    if (!jobData.summary || jobData.summary.trim() === "") {
+        TalentUtil.notification.show("Job Summary is required.", "error", null, null);
+       
+        validationfailure = true;
+      
+    }
+
+    if (!jobData.jobDetails.location.city || jobData.jobDetails.location.city.trim() === "") {
+        TalentUtil.notification.show("City is required.", "error", null, null);
+       
+        validationfailure = true;
+      
+    }
+
+    if (!jobData.jobDetails.location.country || jobData.jobDetails.location.country.trim() === "") {
+        TalentUtil.notification.show("Country is required.", "error", null, null);
+       
+        validationfailure = true;
+      
+    }
+
+    if (!jobData.jobDetails.categories.category || jobData.jobDetails.categories.category.trim() === "") {
+        TalentUtil.notification.show("Category is required.", "error", null, null);
+       
+        validationfailure = true;
+      
+    } 
+
+    if (jobData.jobDetails.jobType.length === 0) {
+        TalentUtil.notification.show("Job Type is required.", "error", null, null);
+        
+        validationfailure = true;
+      
+    } 
+
+     
+
+     if (validationfailure) {
+       
+        return; // This stops further code execution
+    }
+
+    
+    if(validationfailure === false){
         var cookies = Cookies.get('talentAuthToken');   
         $.ajax({
             url: `${envconfig.LISTING_API_URL}/listing/listing/createUpdateJob`,
@@ -121,6 +180,9 @@ export default class CreateJob extends React.Component {
                 
             }.bind(this)
         })
+
+    } 
+
     }
 
     updateStateData(event) {
@@ -131,6 +193,8 @@ export default class CreateJob extends React.Component {
         })
         
     }
+
+
    
     render() {
         return (
