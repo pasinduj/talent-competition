@@ -2,6 +2,7 @@
 import ReactDOM from 'react-dom';
 import NavigationBar from './NavigationBar.jsx';
 import Cookies from 'js-cookie';
+import envconfig from '../envConfig.js';
 
 export class LoggedInNavigation extends React.Component {
     constructor(props) {
@@ -17,9 +18,9 @@ export class LoggedInNavigation extends React.Component {
     }
 
     isUserAuthenticated() {
-        var cookies = Cookies.get('talentAuthToken');
+        var cookies = Cookies.get('talentAuthToken');        
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/isUserAuthenticated',
+            url: `${envconfig.PROFILE_API_URL}/profile/profile/isUserAuthenticated`,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -34,6 +35,7 @@ export class LoggedInNavigation extends React.Component {
                 }
             }.bind(this),
             error: function (res) {
+                console.log(`${envconfig.PROFILE_API_URL}`);
                 console.log("Not logged in!!")
             }.bind(this)
         })

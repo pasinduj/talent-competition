@@ -50,9 +50,8 @@ export class IndividualDetailSection extends Component {
         })
     }
 
-    saveContact() {
-        console.log(this.props.componentId)
-        console.log(this.state.newContact)
+    saveContact() {       
+       
         const data = Object.assign({}, this.state.newContact)
         this.props.controlFunc(this.props.componentId, data)
         this.closeEdit()

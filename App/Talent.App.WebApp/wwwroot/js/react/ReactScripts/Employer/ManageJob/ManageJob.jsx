@@ -6,7 +6,7 @@ import { LoggedInNavigation } from '../../Layout/LoggedInNavigation.jsx';
 import { JobSummaryCard } from './JobSummaryCard.jsx';
 import { BodyWrapper, loaderData } from '../../Layout/BodyWrapper.jsx';
 import { Pagination, Icon, Dropdown, Checkbox, Accordion, Form, Segment } from 'semantic-ui-react';
-
+import envconfig from '../../envConfig.js';
 
 export default class ManageJob extends React.Component {
     constructor(props) {
@@ -65,7 +65,7 @@ export default class ManageJob extends React.Component {
 
     loadData(callback) {
         
-        var link = 'http://localhost:51689/listing/listing/getSortedEmployerJobs?showActive=true&showUnexpired=true&showExpired=true';
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/getSortedEmployerJobs?showActive=true&showUnexpired=true&showExpired=true`;
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
         $.ajax({
@@ -168,7 +168,7 @@ export default class ManageJob extends React.Component {
     editJob(jobid) {
        
         
-        var link = 'http://localhost:51689/listing/listing/GetJobByToEdit?id='+jobid;
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/GetJobByToEdit?id=`+jobid;
         var cookies = Cookies.get('talentAuthToken');
         
         $.ajax({
@@ -213,7 +213,7 @@ export default class ManageJob extends React.Component {
             return; 
         }
        
-        var link = 'http://localhost:51689/listing/listing/closeJob?id='+jobid;
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/closeJob?id=`+jobid;
         var cookies = Cookies.get('talentAuthToken');
        // your ajax call and other logic goes here
         $.ajax({
@@ -252,7 +252,7 @@ export default class ManageJob extends React.Component {
          //load update job list after closing job
         
         
-        var link = 'http://localhost:51689/listing/listing/createUpdateJob';
+        var link = `${envconfig.LISTING_API_URL}/listing/listing/createUpdateJob`;
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({

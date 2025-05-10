@@ -7,6 +7,7 @@ import { IndividualDetailSection } from '../Profile/ContactDetail.jsx';
 import FormItemWrapper from '../Form/FormItemWrapper.jsx';
 import NotificationSetting from './NotificationSetting.jsx';
 import AccountSetting from './AccountSetting.jsx';
+import envconfig from '../envConfig.js';
 
 export default class UserAccountSetting extends React.Component {
     constructor(props) {
@@ -52,7 +53,7 @@ export default class UserAccountSetting extends React.Component {
         const cookies = Cookies.get('talentAuthToken');
         if (field == "name") {            
             $.ajax({
-                url: 'http://localhost:60998/authentication/authentication/changeUserName?userName=' + this.state.userName,
+                url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/changeUserName?userName=' + this.state.userName,
                 type: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + cookies,
@@ -74,7 +75,7 @@ export default class UserAccountSetting extends React.Component {
         if (field == "password") {
             let data = this.state.password;
             $.ajax({
-                url: 'http://localhost:60998/authentication/authentication/changePassword',
+                url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/changePassword',
                 type: "POST",
                 data: JSON.stringify(data),
                 headers: {
@@ -104,7 +105,7 @@ export default class UserAccountSetting extends React.Component {
         }
         if (field == "deactivate") {
             $.ajax({
-                url: 'http://localhost:60998/authentication/authentication/deactivateAccount',
+                url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/deactivateAccount',
                 type: "POST",
                 headers: {
                     'Authorization': 'Bearer ' + cookies,
@@ -125,7 +126,7 @@ export default class UserAccountSetting extends React.Component {
     getUserRole() {
         const cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/getAccountSettingInfo',
+            url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/getAccountSettingInfo',
             type: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + cookies,

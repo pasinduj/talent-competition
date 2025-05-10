@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react'
-import VideoUpload from './VideoUpload.jsx'
+import VideoUpload from './VideoUpload.jsx';
+import envconfig from '../envConfig.js';
 
 export class TalentVideoSection extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ export class TalentVideoSection extends Component {
             <VideoUpload
                 videoName={this.state.profileData.videoName}
                 updateProfileData={this.updateForComponentId}
-                saveVideoUrl={'http://localhost:60290/profile/profile/updateTalentVideo'}
+                saveVideoUrl={'${envconfig.PROFILE_API_URL}/profile/profile/updateTalentVideo'}
             />
         )
         uploaders.push(<VideoUpload videoName='' updateProfileData={this.updateForComponentId} />)

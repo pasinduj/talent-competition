@@ -5,6 +5,7 @@ import { CheckBox } from '../Form/CheckBox.jsx'
 import { userNavigation } from './UserNavigation.jsx'
 import { FormErrors } from '../Form/FormErrors.jsx'
 import Cookies from 'js-cookie'
+import envconfig from '../envConfig.js';
 
 export class EmailVerification extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ export class EmailVerification extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.isFormValid = this.isFormValid.bind(this);
         this.isLoadingChange = this.isLoadingChange.bind(this);
+        
     };
 
     componentDidMount() {
@@ -68,7 +70,7 @@ export class EmailVerification extends React.Component {
     verifyEmail() {
         this.setState({ isLoading: true });
         $.ajax({
-            url: 'http://localhost:60998/authentication/authentication/resendVerificationLink',
+            url: '${envconfig.IDENTITY_API_URL}/authentication/authentication/resendVerificationLink',
             type: 'POST',
             data: JSON.stringify(this.state.email),
             contentType: 'application/json',
